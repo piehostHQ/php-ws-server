@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <style>
+            input, button { padding: 10px; }
+        </style>
+    </head>
+    <body>
+        <div id="chat"></div>
+        <input type="text" id="message" />
+        <button onclick="transmitMessage()">Send</button>
+        <script>
+            var socket  = new WebSocket('ws://localhost:8080');
+
+            var message = document.getElementById('message');
+
+            function transmitMessage() {
+                socket.send( message.value );
+                console.log("message send");
+            }
+            socket.onmessage = function(e) {
+                console.log(e.data,e);
+                console.log("On message");
+                var chat = document.getElementById('chat');
+                chat.innerHTML += e.data + '<br />';
+
+            }
+        </script>
+    </body>
+</html>
