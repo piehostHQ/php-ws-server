@@ -26,7 +26,7 @@ composer install
 ```
 Run the WebSocket server:
 ```bash
-php server.php
+php app.php
 ```
 Open the index.html file in a browser:
 The file includes the client-side code for sending and receiving messages through the WebSocket.
